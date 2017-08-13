@@ -1,0 +1,40 @@
+<create-User ng-if="vm.turn==1"></create-User>
+<div class="usermanage">
+    <h2 style="color: #448aff;text-align: center;"> LIST USER </h2>
+    <hr>
+    <table class="table table-striped">
+        <div class="dropdown">
+            <a class="btn-top" style="margin-right: 15px;" class="btn-top" ng-class="vm.turn==1?'active':''" ng-click="vm.turnActive(1)"
+                href="#" class="btn btn-primary btn-success pull-right"> <span class="glyphicon glyphicon-plus"></span> &nbsp Create New User</a>
+        </div>
+        <thead>
+            <tr class="row-name">
+                <th>Id</th>
+                <th>Email</th>
+                <th>Full name</th>
+                <th>Birthday</th>
+                <th>Adress</th>
+                <th>Phone Number</th>
+                <th>Settings</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="row-content" ng-repeat="x in vm.user track by $index">
+                <td>1</td>
+                <td>{{x.email}}</td>
+                <td>{{x.firstname}}{{x.lastname}}</td>
+                <td>{{x.birthday}}</td>
+                <td>{{x.address}}</td>
+                <td>{{x.phone}}</td>
+                <td>
+                    <a class="btn btn-danger edit " href="path/to/settings " aria-label="Settings ">
+                <i class="fa fa-trash " aria-hidden="true "></i>
+              </a> &nbsp
+                    <a class="btn btn-info edit " href="path/to/settings " aria-label="Settings ">
+                <i class="fa fa-pencil-square-o " aria-hidden="true "></i>
+              </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

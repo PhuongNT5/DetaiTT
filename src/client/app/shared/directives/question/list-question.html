@@ -1,0 +1,26 @@
+<div class="ques ques_col2">
+    <div class="toeic_q_select col2">
+        <div class="q_index">Câu: <strong>{{stt+ 1}}</strong></div>
+        <div class="q_description">{{question.description}}</div>
+        <div class="toeic_q_img"></div>
+        <div class="q_select q_select_col2" inx="0" value="0">
+            <div class="toeic_col2">
+                <label class="radio-inline" ng-class="{choiced :(question.select == question.A), correct:(status =='submited' && question.A == question.answer)}">
+                    <input type="radio"  value={{question.A}} ng-model="question.select" ><span >A. {{question.A}}</span></label>
+            </div>
+            <div class="toeic_col2">
+                <label class="radio-inline" ng-class="{choiced :(question.select == question.B), correct:(status =='submited' && question.B == question.answer)}">
+                    <input type="radio" value={{question.B}} ng-model="question.select"><span >B. {{question.B}}</span></label>
+            </div>
+            <div class="toeic_col2">
+                <label class="radio-inline" ng-class="{choiced :(question.select == question.C), correct:(status =='submited' && question.C == question.answer)}">
+                    <input type="radio"  value={{question.C}} ng-model="question.select"><span>C. {{question.C}}</span></label>
+            </div>
+            <div class="toeic_col2">
+                <label class="radio-inline" ng-class="{choiced :(question.select == question.D), correct:(status =='submited' && question.D == question.answer)}">
+                    <input type="radio" value={{question.D}} ng-model="question.select"><span>D. {{question.D}}</span></label>
+            </div>
+        </div>
+    </div>
+    <div class="thpt_explain"></div>
+</div>

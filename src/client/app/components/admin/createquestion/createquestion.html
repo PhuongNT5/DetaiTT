@@ -1,0 +1,100 @@
+<div class="unitmanage">
+    <form class="form-horizontal">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Create New Question</legend>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="coinspershift">Question Id</label>
+                <div class="col-md-2">
+                    <input id="coinspershift" name="coinspershift" type="text" ng-model="vm.question.question_id" placeholder="Question Id" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="coinspershift">Lesson</label>
+                <div class="col-md-2">
+                    <input id="coinspershift" name="coinspershift" type="text" ng-model="vm.question.lesson_id" placeholder="Lesson" class="form-control input-md">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="coinspershift">Test</label>
+                <div class="col-md-2">
+                    <input id="coinspershift" name="coinspershift" type="text" ng-model="vm.question.test_id" placeholder="Test" class="form-control input-md">
+
+                </div>
+            </div>
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Title</label>
+                <div class="col-md-4">
+                    <input id="textinput" name="textinput" type="text" ng-model="vm.question.type" placeholder="Question Type" class="form-control input-md">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Question Type</label>
+                <div class="col-md-4">
+                    <input id="textinput" name="textinput" type="text" ng-model="vm.question.title" placeholder="Question Title" class="form-control input-md">
+
+                </div>
+            </div>
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="lastname">Description</label>
+                <div class="col-md-4">
+                    <textarea id="lastname" name="lastname" type="text" ng-model="vm.question.description" placeholder="Discription" class="form-control input-md"></textarea>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="coinspershift">Option A</label>
+                <div class="col-md-2">
+                    <input id="coinspershift" name="coinspershift" type="text" ng-model="vm.question.A" placeholder="Option A" class="form-control input-md">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="coinspershift">Option B</label>
+                <div class="col-md-2">
+                    <input id="coinspershift" name="coinspershift" type="text" ng-model="vm.question.B" placeholder="Option B" class="form-control input-md">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="coinspershift">Option C</label>
+                <div class="col-md-2">
+                    <input id="coinspershift" name="coinspershift" type="text" ng-model="vm.question.C" placeholder="Option C" class="form-control input-md">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="coinspershift">Option D</label>
+                <div class="col-md-2">
+                    <input id="coinspershift" name="coinspershift" type="text" ng-model="vm.question.D" placeholder="Option D" class="form-control input-md">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="coinspershift">Answer of Question</label>
+                <div class="col-md-2">
+                    <input id="coinspershift" name="coinspershift" type="text" ng-model="vm.question.answer" placeholder="Answer of Question"
+                        class="form-control input-md">
+
+                </div>
+            </div>
+            <!-- Button (Double) -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="button1id"></label>
+                <div class="col-md-8">
+                    <button id="button1id" name="button1id" class="btn btn-success" ng-click="vm.createQuestion()">Create</button>
+                    <button id="button2id" name="button2id" class="btn btn-danger" ng-class="vm.turn==0?'active':''" ng-click="vm.turnActive(0)">Cancel</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>

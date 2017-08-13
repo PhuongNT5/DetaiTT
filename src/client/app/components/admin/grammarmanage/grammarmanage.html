@@ -1,0 +1,39 @@
+<create-lesson ng-if="vm.turn==1"></create-lesson>
+<div class="usermanage">
+    <h2 style="color: #448aff;text-align: center;"> LIST GRAMMARS </h2>
+    <hr>
+    <table class="table table-striped">
+        <div class="dropdown">
+            <a class="btn-top" style="margin-right: 15px;" ng-class="vm.turn==1?'active':''" ng-click="vm.turnActive(1)" href="#" class="btn btn-primary btn-success pull-right"> <span class="glyphicon glyphicon-plus"></span> &nbsp Create New Grammar</a>
+        </div>
+</div>
+<thead>
+    <tr class="row-name">
+        <th>Lesson Id</th>
+        <th>Grammar Title</th>
+        <th>Content</th>
+        <th>Description</th>
+        <th>Example</th>
+        <th>Setting</th>
+    </tr>
+</thead>
+<tbody>
+    <tr class="row-content" ng-repeat="grammar in vm.grammars track by $index">
+        <th>{{grammar.lesson_id}}</th>
+        <th>{{grammar.gramTitle}}</th>
+        <th>{{grammar.gramContent.content}}</th>
+        <th>{{grammar.gramContent.description}}</th>
+        <th>{{grammar.gramContent.example}}</th>
+        <!--<th>{{lesson.vocabularyId}}</th>-->
+        <td>
+            <a class="btn btn-danger edit " ng-click="vm.deleteGrammar()" aria-label="Settings ">
+                <i class="fa fa-trash " aria-hidden="true "></i>
+              </a> &nbsp
+            <a class="btn btn-info edit " href="path/to/settings " aria-label="Settings ">
+                <i class="fa fa-pencil-square-o " aria-hidden="true "></i>
+              </a>
+        </td>
+    </tr>
+</tbody>
+</table>
+</div>

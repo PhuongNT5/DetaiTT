@@ -1,0 +1,45 @@
+<div class="admin">
+    <nav class="navbar navbar-inverse sidebar" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+                <a class="navbar-brand" href="/admin">ADMIN</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/admin/usermanage">QUẢN LÝ TÀI KHOẢN<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
+                    <li><a href="/admin/unitmanage">QUẢN LÝ CHƯƠNG TRÌNH<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-book"></span></a></li>
+                    <li><a href="/admin/lessonmanage">QUẢN LÝ BÀI HỌC<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-list-alt"></span></a></li>
+                    <li><a href="/admin/exammanage">QUẢN LÝ BÀI THI<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-edit"></span></a></li>
+                    <li><a href="/admin/questionmanage">QUẢN LÝ CÂU HỎI<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-question-sign"></span></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">QUẢN LÝ CHI TIẾT BÀI HỌC <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-file"></span></a>
+                        <ul class="dropdown-menu forAnimate" role="menu">
+                            <li><a href="/admin/vocabulary">QUẢN LÝ VOCABULARY</a></li>
+                            <li><a href="/admin/grammarmanage">QUẢN LÝ GRAMMAR</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <nav class="head">
+        <div class="title"><span style="color:yellow;">PAG</span> ENGLISH</div>
+        <div class="admin-info">
+            <h5>{{vm.name}}</h5>
+        </div>
+    </nav>
+    <div class="main">
+        <!-- Content Here -->
+
+        <ui-view></ui-view>
+    </div>
+
+</div>

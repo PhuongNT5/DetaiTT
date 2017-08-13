@@ -1,0 +1,71 @@
+body,
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hide;
+    .navbar-inverse {
+    background-color: #141D25;
+    border-color: #141D25;
+    font-family:Montserrat, sans-serif!important;
+}
+}
+
+// ::-webkit-scrollbar-track {
+//     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+//     border-radius: 10px; // background-color: #F5F5F5;
+// }
+// ::-webkit-scrollbar {
+//     width: 0.5%; // background-color: #F5F5F5;
+// }
+// ::-webkit-scrollbar-thumb {
+//     border-radius: 10px;
+//     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+//     background-color: #434343;
+// }
+.fontLayout {
+    font-family:Montserrat, sans-serif!important;
+}
+
+.textOverflow {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.listContainer {
+    width: 99.5%;
+    padding-right: 2%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box; // padding: 0 16px 0 20px;
+    @extend .customScrollBar;
+}
+
+.customScrollBar {
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px; // background-color: #F5F5F5;
+    }
+    &::-webkit-scrollbar {
+        width: 0.5%;
+        height: 3px; // background-color: #F5F5F5;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+        background-color: #434343;
+    }
+}
+
+@import 'stylePages/fonts';
+@import 'stylePages/auth';
+@import 'stylePages/layout';
+@import 'stylePages/homepage';
+@import 'stylePages/program';
+@import 'stylePages/unit';
+@import 'stylePages/admin';
+@import 'stylePages/admin.usermanage';
+@import 'stylePages/admin.unitmanage';
+@import 'stylePages/examination';
+@import 'stylePages/test';
+@import 'stylePages/result';

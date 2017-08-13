@@ -1,0 +1,49 @@
+<div class="usermanage">
+    <h2 style="color: #448aff;text-align: center;"> LIST QUESTION </h2>
+    <hr>
+    <table class="table table-striped">
+        <div class="dropdown">
+            <a class="btn-top" style="margin-left: 20%;" href="/admin/createquestion" class="btn btn-primary btn-success pull-right"> <span class="glyphicon glyphicon-plus"></span> &nbsp Create New Question</a>
+        </div>
+        <thead>
+            <tr class="row-name">
+                <th>Question Id</th>
+                <th>Lesson Id</th>
+                <th>Test Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Question Type</th>
+                <th>A</th>
+                <th>B</th>
+                <th>C</th>
+                <th>D</th>
+                <th>Answer</th>
+                <th>Settings</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="row-content" ng-repeat="x in vm.questions track by $index">
+                <th>{{x.question_id}}</th>
+                <th>{{x.lesson_id}}</th>
+                <th>{{x.test_id}}</th>
+                <th>{{x.title}}</th>
+                <th>{{x.description}}</th>
+                <th>{{x.questionType}}</th>
+                <th>{{x.A}}</th>
+                <th>{{x.B}}</th>
+                <th>{{x.C}}</th>
+                <th>{{x.D}}</th>
+                <th>{{x.answer}}</th>
+                <td><img src="{{x.picture}}"></td>
+                <td>
+                    <a class="btn btn-danger edit " ng-click="vm.deleteQuestion(x.question_id)" aria-label="Settings ">
+                <i class="fa fa-trash " aria-hidden="true "></i>
+              </a> &nbsp
+                    <a class="btn btn-info edit " href="path/to/settings " aria-label="Settings ">
+                <i class="fa fa-pencil-square-o " aria-hidden="true "></i>
+              </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

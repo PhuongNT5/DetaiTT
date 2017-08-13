@@ -1,0 +1,66 @@
+<div class="unit">
+    <nav class="navbar navbar-inverse sidebar" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+			</button>
+                <a class="navbar-brand" href="#">UNIT {{vm.unit.unit_id}}</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="sidebar-collapse menu-scroll" style="height: auto;">
+                <ul class="nav navbar-nav">
+                    <li class="sidebar-brand" ng-repeat="lesson in vm.unit.lessons track by $index" ng-click="vm.loadLesson(lesson.lesson_id)">
+                        <a href="#"><span class="fa fa-book solo">  Lesson {{$index +1}}: {{lesson.name}}</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="main">
+        <!-- Content Here -->
+        <div class="content-header">
+            <h1 id="unit_name">
+                <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle">
+                        <i class="fa fa-book"></i>
+                    </a>Unit {{vm.unit.unit_id}}: {{vm.unit.name}}
+            </h1>
+        </div>
+
+        <div class="page-content inset" data-spy="scroll" data-target="#spy">
+            <div class="vocabulary">
+                <h5>I. Vocabulary:</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Từ vựng</th>
+                            <th>Từ loại</th>
+                            <th>Phiên âm</th>
+                            <th>Dịch nghĩa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="word in vm.lesson.vocabularyId">
+                            <td>{{word.word}}</td>
+                            <td>{{word.type}}</td>
+                            <td>/{{word.pronunciation}}/</td>
+                            <td>{{word.translate}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="grammar">
+                <h5>II. Grammar</h5>
+                <div ng-repeat="gram in vm.grammars">
+                    <h5>{{gram.Title}}</h5>
+                    <h4>
+                        <p>{{gram.gramContent.content}}</p>
+                    </h4>
+                    <p> {{ gram.gramContent.description}}</p>
+                    <p>{{ gram.gramContent.example}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

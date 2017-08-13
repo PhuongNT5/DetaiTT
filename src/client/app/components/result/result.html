@@ -1,0 +1,47 @@
+<div class="usermanage">
+    <h2 style="color: #448aff;text-align: center;"> YOUR RESULT </h2>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="span4 well">
+                <div class="row">
+                    <div class="spanava"><a href="" class="thumbnail"><img src="../../../assets/images/boy.png" alt=""></a></div>
+                    <div class="spaninfo">
+                        <p>{{vm.role}}</p>
+                        <p><strong>{{vm.name}}</strong></p>
+                        <p>{{vm.email}}</p>
+                        <p>{{vm.phone}}</p>
+                        <span class=" badge badge-warning">Level: Begin</span>
+                        <span class=" badge badge-info">Score: 0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="your-result" style="font-weight:400">
+        <table class="table table-striped">
+            <thead>
+                <tr class="row-name">
+                    <th>Stt</th>
+                    <th>Test Name</th>
+                    <th>Score</th>
+                    <th>Date test</th>
+                    <th>Test Level</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row-content" ng-repeat="score in vm.score track by $index">
+                    <th>{{$index +1}}</th>
+                    <th>score.testId.name</th>
+                    <th>{{score.score}}</th>
+                    <th>{{score.created}}</th>
+                    <th>{{score.userId.level}}</th>
+                </tr>
+            </tbody>
+        </table>
+        <!--<div class="note" ng-if="vm.notTest">
+            <p>Bạn chưa có bài kiểm tra nào</p>
+            <button class="btn btn-primary" href="/test/1"><a href ="/examination/1">Bắt đầu làm bài kiểm tra</a></button>
+        </div>-->
+    </div>
+</div>

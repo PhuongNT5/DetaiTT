@@ -1,0 +1,55 @@
+<div class="pageContainer fontLayout">
+  <div class="backgroundLayout"></div>
+
+  <nav class="navbar navbar-inverse" data-offset-top="197">
+    <div class="info-block" style="float:left">
+      <a style="color:white ; font-size:11px"> <span class="glyphicon glyphicon-phone" style= "color:yellow;"></span>0962-490-375</a>
+      <a style="color:white ; font-size:11px"> <span class="glyphicon glyphicon-home" style= "color:yellow;"></span>Man Thien-District 9 - HCM City</a>
+      <a style="color:white ; font-size:11px"> <span class="glyphicon glyphicon-user" style= "color:yellow;"></span>{{vm.name}}</a>
+    </div>
+    <form>
+      <input type="text" class="search" name="search" placeholder="Search.." style="float:right;width:250px;">
+    </form>
+  </nav>
+  <div class="header-container">
+    <div class="container-fluid">
+      <!--<div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </but
+
+      </div>-->
+      <div class="collapse navbar-collapse text-center " id="myNavbar">
+        <div class="" style="font-size:10px">
+          <a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+          <a href="/register"><span class="glyphicon glyphicon-log-in"></span> Register</a>
+          <a href="#" ng-click=vm.logout()>Log out</a>
+        </div>
+        <a class="logo" href="/homepage">PAG ENGLISH</a>
+        <h5>HAPPY LEARNING</h5>
+        <ul class="nav navbar-nav text-center">
+          <li class="active"><a href="/">HOME</a></li>
+          <li><a href="/program">BÀI HỌC</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">KIỂM TRA KIẾN THỨC <b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/examination/1">CƠ BẢN</a></li>
+              <li><a href="/examination/2">TRUNG BÌNH</a></li>
+              <li><a href="examination/3">NÂNG CAO</a></li>
+            </ul>
+          </li>
+
+          <li><a href="/result">THÀNH TÍCH</a></li>
+          <li><a href="#">THAM KHẢO</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-panel">
+
+    <ui-view class="shuffle-animation"></ui-view>
+  </div>
+</div>

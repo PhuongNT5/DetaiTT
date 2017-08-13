@@ -1,0 +1,35 @@
+<create-lesson ng-if="vm.turn==1"></create-lesson>
+<div class="usermanage" style="width:90%">
+    <h2 style="color: #448aff;text-align: center;"> LIST LESSON </h2>
+    <hr>
+    <table class="table table-striped">
+        <div class="dropdown">
+            <a class="btn-top" style="margin-right: 15px;" ng-class="vm.turn==1?'active':''" ng-click="vm.turnActive(1)" href="#" class="btn btn-primary btn-success pull-right"> <span class="glyphicon glyphicon-plus"></span> &nbsp Create New Lesson</a>
+        </div>
+        <thead>
+            <tr class="row-name">
+                <th>Lesson Id</th>
+                <th>Unit ID</th>
+                <th>Lesson Name</th>
+                <th>Setting</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="row-content" ng-repeat="lesson in vm.lesson track by $index">
+                <th>{{lesson.lesson_id}}</th>
+                <th>{{lesson.unit_id}}</th>
+                <th>{{lesson.name}}</th>
+                <th>{{lesson.title}}</th>
+                <!--<th>{{lesson.vocabularyId}}</th>-->
+                <td>
+                    <a class="btn btn-danger edit " ng-click="vm.deleteLesson(lesson.lesson_id) " aria-label="Settings ">
+                <i class="fa fa-trash " aria-hidden="true "></i>
+              </a> &nbsp
+                    <a class="btn btn-info edit " href="path/to/settings " aria-label="Settings ">
+                <i class="fa fa-pencil-square-o " aria-hidden="true "></i>
+              </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

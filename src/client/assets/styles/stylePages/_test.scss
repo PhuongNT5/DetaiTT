@@ -1,0 +1,135 @@
+.doingtest{
+    background-color:#E9E9E9;
+    .doingtest-page{
+        height:100%;
+        width: 60%;
+        background-color: white;
+        margin-left:20%;
+    }
+    .headpage{
+        width:100%;
+        height:80px;
+        background-color:#141D25;
+        color:white;
+        h5, .info{
+            margin-left:20%;
+            font-size:10px;
+            padding-top:20px;
+            margin-top:0px !important;
+        }
+        .unitname{
+            float: right;
+            border-style: solid;
+            margin-right: 20%;
+            border-radius: 98px;
+            width: 100px;
+            height: 35px;
+            margin-top: -20px;
+            padding-left: 28px;
+            padding-top: 6px;
+            border-width: 1.5px;
+
+        }
+    }
+}
+
+.test-detail{
+font-size:12px;
+font-weight: 100;
+.content{
+    width:90%;
+    margin-left:5%;
+    font-size:12px;
+    font-weight: 80;
+    margin-top:20px;
+}
+.vien,.vien2{
+    border-top: 1px dashed #8c8b8b;
+    width:80%;
+    border-width: 1px;
+}
+.btn{
+    margin-left:45%;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+.ques_col2{
+float:left;
+}
+.toeic_q_select.col2{
+    margin-left:13%;
+    width: 80%;
+}
+.ques{
+        width: 100%;
+    display: block;
+    margin: 20px 0px;
+    .q_index{
+        float: left;
+    width: 72px;
+    border-radius: 50px;
+    border: 1px solid #58960f;
+    text-align: center;
+    height: 32px;
+    line-height: 32px;
+    color: #58960f;
+    margin-top: 7px;
+    }
+    .q_description{
+        display: inline-block;
+    width: 540px;
+    line-height: 24px;
+    font-weight: bold;
+    color: #004040;
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+    }
+     .q_select_col2{
+    width: 600px;
+    float: left;
+    margin-left: 20%;
+
+    }
+    .toeic_col2{
+    float: left;
+    width: 50%;
+    text-align: center;
+    margin-top: 10px;
+        .radio-inline{
+            float: left !important;
+        }
+    }
+    label{
+    font-weight: normal !important;
+    }
+    .choiced{
+        color:#F2994B !important;
+        font-style: bold !important;
+    }
+    .correct{
+        color:green !important;
+        font-style: bold !important;
+    }
+    .incorrect{
+                color:red !important;
+        font-style: bold !important;
+    }
+}
+.affix{
+    position: none !important;
+}
+}
+.clock{
+   img{
+       float:left;
+       width:6%;
+       margin-left:12%;
+   }
+}
+.countdowntimer{
+     position: absolute;
+    margin-top: 140px;
+    margin-left: 13%;
+    font-style: bold;
+}

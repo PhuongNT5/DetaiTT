@@ -1,0 +1,10 @@
+<div class="col-sm-4 col-md-4">
+    <div class="unit" ng-class="{color1: (program.unit_id%6)==1, color2: (program.unit_id%6)==2,color3: (program.unit_id%6)==3,
+    color4: (program.unit_id%6)===4, color5: (program.unit_id%6)==5,color6: (program.unit_id%6)===0}">
+        <h2 class=" tm_pb_link_box_title " style="font-style:normal;text-align:center; font-weight:700;">UNIT {{program.unit_id}}</h2>
+        <h2 class=" tm_pb_link_box_title " style="font-style:normal;text-align:center; font-weight:700;">{{program.name}}</h2>
+        <figure><img src="{{program.picture}}" alt=" "></figure>
+        <div class="tm_pb_link_box_button_holder "><a href="/unit/{{program.unit_id}}" class="btn tm_pb_button">Program Details</a></div>
+
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="unitmanage">
+    <form class="form-horizontal">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Create New Unit</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput"> Name</label>
+                <div class="col-md-4">
+                    <input id="textinput" name="textinput" type="text" ng-model="vm.unit.name" placeholder="Unit Name" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="lastname">Title</label>
+                <div class="col-md-4">
+                    <input id="lastname" name="lastname" type="text" ng-model="vm.unit.title" placeholder="lesson Title" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="coinspershift">Unit Id</label>
+                <div class="col-md-2">
+                    <input id="coinspershift" name="coinspershift" type="text" ng-model="vm.unit.unit_id" placeholder="Id" class="form-control input-md">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="coinspershift">Unit Picture</label>
+                <div class="col-md-2">
+                    <input id="coinspershift" name="coinspershift" type="text" ng-model="vm.unit.picture" placeholder="Link Picture" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Button (Double) -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="button1id"></label>
+                <div class="col-md-8">
+                    <button id="button1id" name="button1id" class="btn btn-success" ng-click="vm.createunit()">Create</button>
+                    <button id="button2id" name="button2id" class="btn btn-danger" href="admin/unitmanage" ng-class="vm.turn==0?'active':''"
+                        ng-click="vm.turnActive(0)">Cancel</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
