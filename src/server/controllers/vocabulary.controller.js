@@ -18,34 +18,36 @@ function getWords(req, res, next) {
 }
 
 function createWords(req, res, next) {
-    var request = {
-        vocabulary_id: req.body.vocabulary_id,
-        word: req.body.word,
-        type: req.body.type,
-        pronunciation: req.body.pronunciation,
-        translate: req.body.translate,
-        lesson_id: req.body.lesson_id
-    };
-    vocabularyDao.findOne({ vocabulary_id: request.vocabulary_id }).then(function (vocabulary) {
+    vocabularyDao.count().exec(function (err, count) {
+        var request = {
+            vocabulary_id: count + 1,
+            word: req.body.word,
+            type: req.body.type,
+            pronunciation: req.body.pronunciation,
+            translate: req.body.translate,
+            lesson_id: req.body.lesson_id
+        };
+        vocabularyDao.findOne({ vocabulary_id: request.vocabulary_id }).then(function (vocabulary) {
 
-        if (vocabulary) {
-            return next({ errorCode: 400, message: "duplicate vocabulary_id" });
-        }
-
-        vocabularyDao.create(request).then(function (vocabulary) {
-
-            if (!vocabulary) {
-                return next({ errorCode: 400, message: "create failed" });
+            if (vocabulary) {
+                return next({ errorCode: 400, message: "duplicate vocabulary_id" });
             }
-            res.send(vocabulary).end();
+
+            vocabularyDao.create(request).then(function (vocabulary) {
+
+                if (!vocabulary) {
+                    return next({ errorCode: 400, message: "create failed" });
+                }
+                res.send(vocabulary).end();
+
+            }).catch(function (err) {
+                return next(err);
+            });
 
         }).catch(function (err) {
             return next(err);
-        });
-
-    }).catch(function (err) {
-        return next(err);
-    })
+        })
+    });
 }
 
 function updateWord(req, res, next) {

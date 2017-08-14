@@ -15,7 +15,6 @@
             console.log(123);
             function succeedCallback(user) {
                 vm.user = user;
-                console.log(123);
             }
 
             function errorCallback(err) {

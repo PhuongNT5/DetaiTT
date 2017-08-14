@@ -19,31 +19,35 @@ function getUnits(req, res, next) {
 }
 
 function createUnit(req, res, next) {
-    var request = {
-        unit_id: req.body.unit_id,
-        name: req.body.name,
-        title: req.body.title
-    };
-    unitDao.findOne({ unit_id: request.unit_id }).then(function (unit) {
+    unitDao.count().exec(function (err, count) {
 
-        if (unit) {
-            return next({ errorCode: 400, message: "duplicate unit_id" });
-        }
+        var request = {
+            unit_id: count + 2,
+            name: req.body.name,
+            title: req.body.title,
+            picture: req.body.picture
+        };
+        unitDao.findOne({ name: request.name }).then(function (unit) {
 
-        unitDao.create(request).then(function (unit) {
-
-            if (!unit) {
-                return next({ errorCode: 400, message: "create failed" });
+            if (unit) {
+                return next({ errorCode: 400, message: "duplicate unit name" });
             }
-            res.send(unit).end();
+
+            unitDao.create(request).then(function (unit) {
+
+                if (!unit) {
+                    return next({ errorCode: 400, message: "create failed" });
+                }
+                res.send(unit).end();
+
+            }).catch(function (err) {
+                return next(err);
+            });
 
         }).catch(function (err) {
             return next(err);
-        });
-
-    }).catch(function (err) {
-        return next(err);
-    })
+        })
+    });
 }
 
 function updateUnit(req, res, next) {

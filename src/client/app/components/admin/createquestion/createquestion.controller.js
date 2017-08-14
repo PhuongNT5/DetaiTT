@@ -39,6 +39,7 @@
             function errorCallback(err) {
                 console.log(err);
             }
+            validForm();
             if (vm.isValid == true) {
                 questionService.createQuestion(vm.question).then(succeedCallback, errorCallback);
                 questionService.loadQuestions().then(function (question) {

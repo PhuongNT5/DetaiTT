@@ -29,6 +29,10 @@ var lessonSchema = new schema({
         type: String,
         require: true
     },
+    // level: {
+    //     type: String,
+    //     require: true
+    // },
     created: {
         type: Date,
         default: Date.now

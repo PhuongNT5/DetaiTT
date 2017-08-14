@@ -1,11 +1,12 @@
 (function () {
     angular.module('app.test')
         .controller('testController', testController);
-    testController.$inject = ['$q', '$scope', '$http', '$state', '$stateParams', 'questionService', '$interval', 'scoreService', 'authService'];
-    function testController($q, $scope, $http, $state, $stateParams, questionService, $interval, scoreService, authService) {
+    testController.$inject = ['$q', '$scope', '$http', '$state', '$stateParams', 'questionService', '$interval', 'scoreService', 'authService', 'testService'];
+    function testController($q, $scope, $http, $state, $stateParams, questionService, $interval, scoreService, authService, testService) {
         var vm = this;
         var numberQues = 10;
         vm.questions = {};
+        vm.questionA = {};
         vm.count = 0;
         vm.checkAns = '';
         vm.status = 'todo';
@@ -16,27 +17,63 @@
         vm.countdownTimer = 0;
         vm.isDisable = false;
         vm.score = {};
+        vm.questionX = [];
+        vm.TestID = '';
+        vm.level = $stateParams.level;
 
         init();
         var user = authService.getToken();
-
+        function getTest() {
+            testService.loadTests().then(function (test) {
+                vm.TestID = test._id;
+            }, function (err) {
+                console.log(err);
+            })
+        }
+        getTest();
         $scope.get_val = function (event) {
             vm.status = 'submited';
             vm.isDisable = true;
-            for (var i = 1; i < 11; i++) {
-                if (vm.questions[i]) {
-                    if (vm.questions[i].select === vm.questions[i].answer) {
-                        vm.count++;
+            questionService.loadQuestions().then(function (response) {
+                vm.questionA = response;
+
+                // for (var i = 0; i < 20; i++) {
+                //     for (var j = 0; j < 5; j++) {
+                //         if (vm.questions[j]) {
+                //             if (vm.questions[j].question_id == vm.questionA[i].question_id) {
+                //                 vm.questionX.push(vm.questionA[i]);
+                //                 if (vm.questions[j].select === vm.questionA[i].answer) {
+                //                     vm.count++;
+
+                //                 }
+                //             }
+                //         }
+                //     }
+                // }
+                response.map((val) => {
+                    for (var i = 0; i < 5; i++) {
+                        if (val.question_id == vm.questions[i].question_id) {
+                            vm.questions[i].answer = val.answer;
+                        }
                     }
-                } else continue;
-            }
+                });
+                vm.count = vm.questions.filter((val) => {
+                    for (var i = 0; i < 5; i++) {
+                        if (val.answer == vm.questions[i].select) {
+                            return val;
+                        }
+                    }
+                }).length;
+            }, function (err) {
+                console.log(err);
+            })
             stopTimer();
-            console.log(user._id);
             var obj = {
                 userId: user._id,
-                testId: $stateParams.test_id,
+                testId: vm.TestID,
                 score: vm.count
             }
+
             scoreService.createScore(obj).then(function (response) {
                 console.log("Create succsess");
             }, function (err) {
@@ -52,7 +89,7 @@
             function errorCallback(err) {
                 console.log(err);
             }
-            questionService.getRanQuestion($stateParams.test_id).then(succeedCallback, errorCallback);
+            questionService.getRanQuestion($stateParams.level).then(succeedCallback, errorCallback);
             displayTimer(0);
             if (vm.countdown > 0) {
                 startTimer(vm.countdown);

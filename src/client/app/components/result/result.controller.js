@@ -13,6 +13,7 @@
         vm.phone = '';
         vm.email = '';
         vm.notTest = true;
+        vm.timeTest = '';
         init();
         function init() {
             var a = authService.getToken();
@@ -21,6 +22,9 @@
             vm.email = a.email;
             vm.phone = a.phone;
             scoreService.getScoreByUserId(a._id).then(function (score) {
+                angular.forEach(score, function (e) {
+                    e.created = moment(e.created).format('DD-MM-YYYY HH:mm')
+                }, this);
                 vm.score = score;
             }, function (err) {
                 console.log(err);

@@ -16,11 +16,10 @@
         };
         return directive;
     }
-    // listTestController.$inject = ['$scope'];
-    // function listTestController($scope) {
-    //     var vm = this;
-    //     vm.testnew = {};
-    //     vm.testnew.testId = 
-    // }
+    listTestController.$inject = ['$scope'];
+    function listTestController($scope) {
+        var vm = this;
+
+    }
 
 })();

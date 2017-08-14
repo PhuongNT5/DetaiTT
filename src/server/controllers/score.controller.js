@@ -22,7 +22,6 @@ function getScores(req, res, next) {
 function createScore(req, res, next) {
     var request = {
         score: req.body.score,
-        time: req.body.time,
         userId: req.body.userId,
         testId: req.body.testId
     };
@@ -74,7 +73,6 @@ function updateScore(req, res, next) {
     });
     scoreDao.count().exec(function (err, count) {
         scoreDao.findOne().skip(count - 1).then(function (score) {
-            console.log(score);
             scoreDao.update(score, request).then(function (response) {
                 res.status(200).send(response).end();
             }).catch(function (err) {

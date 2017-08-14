@@ -6,7 +6,7 @@ module.exports = function () {
     router.post('/', scoreController.createScore);
     router.get('/', scoreController.getScores);
     router.put('/', scoreController.updateScore);
-    router.get('/:user_id', scoreController.getScoreByUserId);
+    router.get('/:userId', scoreController.getScoreByUserId);
 
     return router;
 } 

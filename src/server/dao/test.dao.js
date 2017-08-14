@@ -7,7 +7,8 @@ module.exports = {
     create: create,
     findOne: findOne,
     update: update,
-    Delete: Delete
+    Delete: Delete,
+    count: count
 };
 
 function listAll(query, sort) {
@@ -30,3 +31,7 @@ function update(condition, model) {
 function Delete(condition) {
     return Test.remove(condition);
 }
+function count() {
+    return Test.count();
+}
+

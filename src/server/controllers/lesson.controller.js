@@ -22,31 +22,33 @@ function getLessons(req, res, next) {
 }
 
 function createLessons(req, res, next) {
-    var request = {
-        lesson_id: req.body.lesson_id,
-        name: req.body.name,
-        title: req.body.title
-    };
-    lessonDao.findOne({ lesson_id: request.lesson_id }).then(function (lesson) {
+    lessonDao.count().exec(function (err, count) {
+        var request = {
+            lesson_id: count + 1,
+            name: req.body.name,
+            title: req.body.title
+        };
+        lessonDao.findOne({ lesson_id: request.lesson_id }).then(function (lesson) {
 
-        if (lesson) {
-            return next({ errorCode: 400, message: "duplicate lesson_id" });
-        }
-
-        lessonDao.create(request).then(function (lesson) {
-
-            if (!lesson) {
-                return next({ errorCode: 400, message: "create failed" });
+            if (lesson) {
+                return next({ errorCode: 400, message: "duplicate lesson_id" });
             }
-            res.send(lesson).end();
+
+            lessonDao.create(request).then(function (lesson) {
+
+                if (!lesson) {
+                    return next({ errorCode: 400, message: "create failed" });
+                }
+                res.send(lesson).end();
+
+            }).catch(function (err) {
+                return next(err);
+            });
 
         }).catch(function (err) {
             return next(err);
-        });
-
-    }).catch(function (err) {
-        return next(err);
-    })
+        })
+    });
 }
 
 function updateLesson(req, res, next) {

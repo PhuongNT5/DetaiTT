@@ -39,3 +39,4 @@ function find(condition) {
 function Delete(condition) {
     return Question.remove(condition);
 }
+

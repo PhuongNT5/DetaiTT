@@ -1,12 +1,13 @@
 (function () {
     angular.module('app.exammanage')
         .controller('exammanageController', exammanageController);
-    exammanageController.$inject = ['$q', '$http', '$state', 'testService'];
-    function exammanageController($q, $http, $state, testService) {
+    exammanageController.$inject = ['$q', '$http', '$state', 'testService', '$stateParams'];
+    function exammanageController($q, $http, $state, testService, $stateParams) {
         var vm = this;
         vm.test = {};
         vm.turnActive = turnActive;
         vm.turn = 0;
+        vm.Level = $state.params.level;
         vm.deleteTest = deleteTest
         function turnActive(state) {
             vm.turn = state;
@@ -20,7 +21,7 @@
             function errorCallback(err) {
                 console.log(err);
             }
-            testService.loadTests().then(function (test) {
+            testService.getTestByLevel(vm.Level).then(function (test) {
                 vm.test = test;
             }, errorCallback);
         }

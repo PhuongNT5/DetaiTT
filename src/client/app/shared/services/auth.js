@@ -2,8 +2,8 @@
 
   angular.module('app.services')
     .factory('authService', authService);
-  authService.$inject = ['$q', '$http', '$localStorage', '$sessionStorage', 'jwtHelper']
-  function authService($q, $http, $localStorage, $sessionStorage, jwtHelper) {
+  authService.$inject = ['$state', '$q', '$http', '$localStorage', '$sessionStorage', 'jwtHelper']
+  function authService($state, $q, $http, $localStorage, $sessionStorage, jwtHelper) {
     return {
       login: login,
       logout: logout,
@@ -38,6 +38,12 @@
           storage.token = res.data.token;
           storage.user = jwtHelper.decodeToken(res.data.token);
           deferred.resolve('Login successful');
+          if (storage.user.roles == "admin") {
+            $state.go('admin');
+          } else {
+            $state.go('layout.homepage');
+
+          }
         }, function (err) {
           deferred.reject(err.data.message);
         });

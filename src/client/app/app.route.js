@@ -25,8 +25,10 @@
             if (toState.url === '/login' || toState.url === '/register') {
                 if (authService.login(null, 2)) {
                     event.preventDefault();
-                    if (a.roles = 'admin') {
+                    if (a.roles == 'admin') {
                         $state.go('admin');
+                    } else {
+                        $state.go('layout.homepage');
                     }
                 }
             }
@@ -34,6 +36,12 @@
                 if (!authService.login(null, 2)) {
                     event.preventDefault();
                     $state.go('auth.login');
+                } else {
+                    // console.log(a)
+                    if (a.roles !== 'admin') {
+                        event.preventDefault();
+                        $state.go('layout.homepage');
+                    }
                 }
             }
             else if (toState.url === '/') {

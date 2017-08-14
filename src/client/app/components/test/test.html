@@ -4,8 +4,8 @@
     <div class="doingtest-page">
         <div class="headpage">
             <h5>VOCABULARY AND GRAMMAR TEST</h5>
-            <a class="info">Level:{{vm.test.level}}</a>
-            <a class="unitname">Unit 1</a>
+            <a class="info">Level:{{vm.level}}</a>
+            <a class="unitname">Test {{}}</a>
         </div>
         <div class="test-detail">
             <div class="content">
@@ -14,7 +14,7 @@
                     nhất để hoàn thành các câu đã cho.</p>
             </div>
             <hr class="vien">
-            <div ng-if="vm.questions" ng-repeat="question in vm.questions track by $index ">
+            <div ng-if="vm.questions" ng-repeat="question in vm.questions ">
                 <list-question question="question" stt="$index" status="vm.status"> </list-question>
             </div>
             <hr class="vien2">

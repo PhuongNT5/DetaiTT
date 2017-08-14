@@ -9,15 +9,15 @@
                     <input type="radio"  value={{question.A}} ng-model="question.select" ><span >A. {{question.A}}</span></label>
             </div>
             <div class="toeic_col2">
-                <label class="radio-inline" ng-class="{choiced :(question.select == question.B), correct:(status =='submited' && question.B == question.answer)}">
+                <label class="radio-inline" ng-class="{choiced: question.select == question.B, correct:(status =='submited' && question.B == question.answer)}">
                     <input type="radio" value={{question.B}} ng-model="question.select"><span >B. {{question.B}}</span></label>
             </div>
             <div class="toeic_col2">
-                <label class="radio-inline" ng-class="{choiced :(question.select == question.C), correct:(status =='submited' && question.C == question.answer)}">
+                <label class="radio-inline" ng-class="{choiced: question.select == question.C, correct:(status =='submited' && question.C ==question.answer)}">
                     <input type="radio"  value={{question.C}} ng-model="question.select"><span>C. {{question.C}}</span></label>
             </div>
             <div class="toeic_col2">
-                <label class="radio-inline" ng-class="{choiced :(question.select == question.D), correct:(status =='submited' && question.D == question.answer)}">
+                <label class="radio-inline" ng-class="{choiced: question.select == question.D, correct:(status =='submited' && question.D == question.answer)}">
                     <input type="radio" value={{question.D}} ng-model="question.select"><span>D. {{question.D}}</span></label>
             </div>
         </div>

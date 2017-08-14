@@ -32,10 +32,10 @@
             <tbody>
                 <tr class="row-content" ng-repeat="score in vm.score track by $index">
                     <th>{{$index +1}}</th>
-                    <th>score.testId.name</th>
+                    <th>{{score.testId.name}}</th>
                     <th>{{score.score}}</th>
                     <th>{{score.created}}</th>
-                    <th>{{score.userId.level}}</th>
+                    <th>{{score.testId.level}}</th>
                 </tr>
             </tbody>
         </table>

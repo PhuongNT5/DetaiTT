@@ -1,18 +1,14 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 var questionSchema = new schema({
-    lesson_id: {
-        type: Number,
-        require: true,
-    },
-    test_id: {
-        type: Number,
-        require: true
-    },
     question_id: {
         type: Number,
         require: true,
         unique: true
+    },
+    level: {
+        type: String,
+        require: true
     },
     title: {
         type: String,

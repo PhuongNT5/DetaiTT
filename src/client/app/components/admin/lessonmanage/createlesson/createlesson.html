@@ -4,20 +4,14 @@
 
             <!-- Form Name -->
             <legend>Create New Lesson</legend>
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="coinspershift">Lesson Id</label>
-                <div class="col-md-2">
-                    <input id="coinspershift" name="coinspershift" type="text" ng-model="vm.lesson.lesson_id" placeholder="Id" class="form-control input-md">
-
-                </div>
-            </div>
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="coinspershift">Unit Id</label>
-                <div class="col-md-2">
-                    <input id="coinspershift" name="coinspershift" type="text" ng-model="vm.lesson.unit_id" placeholder="Id" class="form-control input-md">
-
+                <div class="form-group"><label class="col-md-3 control-label">Unit Name<span class="require">*</span></label>
+                    <div class="col-md-6">
+                        <select id="name" multiple="multiple" class="form-control" ng-model="vm.dataNames" ng-options="name as unit.name for unit in vm.units track by unit.id">
+                                        </select>
+                    </div>
                 </div>
             </div>
             <!-- Text input-->

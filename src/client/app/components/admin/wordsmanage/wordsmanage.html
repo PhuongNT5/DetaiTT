@@ -1,0 +1,40 @@
+<create-word ng-if="vm.turn==1"></create-word>
+<div class="usermanage">
+    <h2 style="color: #448aff;text-align: center;"> LIST VOCABULARY </h2>
+    <hr>
+    <table class="table table-striped">
+        <div class="dropdown">
+            <a class="btn-top" style="margin-right: 15px;" ng-class="vm.turn==1?'active':''" ng-click="vm.turnActive(1)" href="#" class="btn btn-primary btn-success pull-right"> <span class="glyphicon glyphicon-plus"></span> &nbsp Create New Word</a>
+        </div>
+</div>
+<thead>
+    <tr class="row-name">
+        <th>Vocabulary Id</th>
+        <th>Word</th>
+        <th>Type</th>
+        <th>Pronunciation</th>
+        <th>Translate</th>
+        <th>Lesson Id</th>
+        <th>Setting</th>
+    </tr>
+</thead>
+<tbody>
+    <tr class="row-content" ng-repeat="vocabulary in vm.vocabularies track by $index">
+        <th>{{vocabulary.vocabulary_id}}</th>
+        <th>{{vocabulary.word}}</th>
+        <th>{{vocabulary.type}}</th>
+        <th>{{vocabulary.pronunciation}}</th>
+        <th>{{vocabulary.translate}}</th>
+        <th>{{vocabulary.lesson_id}}</th>
+        <td>
+            <a class="btn btn-danger edit " ng-click="vm.deleteGrammar()" aria-label="Settings ">
+                <i class="fa fa-trash " aria-hidden="true "></i>
+              </a> &nbsp
+            <a class="btn btn-info edit " href="path/to/settings " aria-label="Settings ">
+                <i class="fa fa-pencil-square-o " aria-hidden="true "></i>
+              </a>
+        </td>
+    </tr>
+</tbody>
+</table>
+</div>

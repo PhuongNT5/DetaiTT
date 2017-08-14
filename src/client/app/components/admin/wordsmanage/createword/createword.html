@@ -1,0 +1,57 @@
+<div class="unitmanage">
+    <form class="form-horizontal">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Create New Word</legend>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="coinspershift">Lesson Id</label>
+                <div class="col-md-2">
+                    <input id="coinspershift" name="coinspershift" type="text" ng-model="vm.vocabulary.lesson_id" placeholder="Lesson Id" class="form-control input-md">
+
+                </div>
+            </div>
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Word</label>
+                <div class="col-md-4">
+                    <input id="textinput" name="textinput" type="text" ng-model="vm.vocabulary.word" placeholder="Word" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="lastname">Type</label>
+                <div class="col-md-2">
+                    <input id="lastname" name="lastname" type="text" ng-model="vm.vocabulary.type" placeholder="Type" class="form-control input-md">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Pronunciation</label>
+                <div class="col-md-4">
+                    <input id="textinput" name="textinput" type="text" ng-model="vm.vocabulary.pronunciation" placeholder="Pronunciation" class="form-control input-md">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Translate</label>
+                <div class="col-md-4">
+                    <input id="textinput" name="textinput" type="text" ng-model="vm.vocabulary.translate" placeholder="Translate" class="form-control input-md">
+
+                </div>
+            </div>
+            <!-- Button (Double) -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="button1id"></label>
+                <div class="col-md-8">
+                    <button id="button1id" name="button1id" class="btn btn-success" ng-click="vm.createlesson()">Create</button>
+                    <button id="button2id" name="button2id" class="btn btn-danger" ng-class="vm.turn==0?'active':''" ng-click="vm.turnActive(0)">Cancel</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>

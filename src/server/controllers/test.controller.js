@@ -20,33 +20,35 @@ function getTests(req, res, next) {
 }
 
 function createTest(req, res, next) {
-    var request = {
-        test_id: req.body.test_id,
-        name: req.body.name,
-        title: req.body.title,
-        time: req.body.time,
-        level: req.body.level
-    };
-    testDao.findOne({ test_id: request.test_id }).then(function (test) {
+    testDao.count().exec(function (err, count) {
+        var request = {
+            test_id: count + 1,
+            name: req.body.name,
+            title: req.body.title,
+            time: req.body.time,
+            level: req.body.level
+        };
+        testDao.findOne({ test_id: request.test_id }).then(function (test) {
 
-        if (test) {
-            return next({ errorCode: 400, message: "duplicate test_id" });
-        }
-
-        testDao.create(request).then(function (test) {
-
-            if (!test) {
-                return next({ errorCode: 400, message: "create failed" });
+            if (test) {
+                return next({ errorCode: 400, message: "duplicate test_id" });
             }
-            res.send(test).end();
+
+            testDao.create(request).then(function (test) {
+
+                if (!test) {
+                    return next({ errorCode: 400, message: "create failed" });
+                }
+                res.send(test).end();
+
+            }).catch(function (err) {
+                return next(err);
+            });
 
         }).catch(function (err) {
             return next(err);
-        });
-
-    }).catch(function (err) {
-        return next(err);
-    })
+        })
+    });
 }
 
 function updateTest(req, res, next) {
@@ -73,13 +75,7 @@ function getTest(req, res, next) {
     var testId = req.params.test_id;
     testDao.findOne({ test_id: testId }).then(function (test) {
         var response = test.toObject();
-        questionDao.listAll({ deleted: null, test_id: testId }, 'question_id').then(function (questions) {
-            response.questions = questions;
-            res.send(response).end();
-        }).catch(function (err) {
-            return next(err);
-        });
-
+        res.send(test);
     }).catch(function (err) {
         return next(err);
     });

@@ -105,15 +105,15 @@ float:left;
     }
     .choiced{
         color:#F2994B !important;
-        font-style: bold !important;
+        font-weight: bold !important;
     }
     .correct{
         color:green !important;
-        font-style: bold !important;
+        font-weight: bold !important;
     }
     .incorrect{
                 color:red !important;
-        font-style: bold !important;
+       font-weight: bold !important;
     }
 }
 .affix{
@@ -129,7 +129,7 @@ float:left;
 }
 .countdowntimer{
      position: absolute;
-    margin-top: 140px;
+    margin-top: 130px;
     margin-left: 13%;
     font-style: bold;
 }

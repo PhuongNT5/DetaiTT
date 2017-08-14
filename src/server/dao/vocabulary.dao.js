@@ -6,7 +6,8 @@ module.exports = {
     listAll: listAll,
     create: create,
     findOne: findOne,
-    update: update
+    update: update,
+    count: count
 };
 
 function listAll(query, sort) {
@@ -26,3 +27,6 @@ function update(condition, model) {
     return Vocabulary.findOneAndUpdate(condition, model, { new: true });
 }
 
+function count() {
+    return Vocabulary.count();
+}
