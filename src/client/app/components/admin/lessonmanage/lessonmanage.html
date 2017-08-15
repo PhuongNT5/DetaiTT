@@ -1,6 +1,6 @@
 <create-lesson ng-if="vm.turn==1"></create-lesson>
 <div class="usermanage">
-    <h2 style="color: #448aff;text-align: center;"> LIST LESSON </h2>
+    <h2 style="color: #448aff;text-align: center;"> LIST LESSONS </h2>
     <hr>
     <table class="table table-striped">
         <div class="dropdown">
@@ -10,6 +10,7 @@
             <tr class="row-name">
                 <th>Lesson Id</th>
                 <th>Unit Name</th>
+                <th>Lesson Title</th>
                 <th>Lesson Name</th>
                 <th>Setting</th>
             </tr>
@@ -17,9 +18,9 @@
         <tbody>
             <tr class="row-content" ng-repeat="lesson in vm.lesson track by $index">
                 <th>{{lesson.lesson_id}}</th>
-                <th>{{lesson.unit_id}}</th>
-                <th>{{lesson.name}}</th>
+                <th>{{vm.units[lesson.unit_id].name}}</th>
                 <th>{{lesson.title}}</th>
+                <th>{{lesson.name}}</th>
                 <!--<th>{{lesson.vocabularyId}}</th>-->
                 <td>
                     <a class="btn btn-danger edit " ng-click="vm.deleteLesson(lesson.lesson_id) " aria-label="Settings ">

@@ -1,8 +1,8 @@
 (function () {
     angular.module('app.wordsmanage')
         .controller('wordsmanageController', wordsmanageController);
-    wordsmanageController.$inject = ['$q', '$http', '$state', 'vocabularyService'];
-    function wordsmanageController($q, $http, $state, vocabularyService) {
+    wordsmanageController.$inject = ['$q', '$http', '$state', 'vocabularyService', 'lessonService'];
+    function wordsmanageController($q, $http, $state, vocabularyService, lessonService) {
         var vm = this;
         vm.vocabulary = {};
 
@@ -22,6 +22,9 @@
             }
             vocabularyService.loadVocabularies().then(function (vocabularies) {
                 vm.vocabularies = vocabularies;
+            }, errorCallback);
+            lessonService.loadLessons().then(function (lessons) {
+                vm.lessons = lessons;
             }, errorCallback);
         }
     }

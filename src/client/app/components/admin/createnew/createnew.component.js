@@ -26,6 +26,7 @@ function createnewController($q, $http, $state, $scope, unitService) {
 
         function errorCallBack(err) {
             console.log(err);
+            toastr.error(err.message);
         }
         unitService.createUnit(vm.unit).then(successCallBack, errorCallBack);
     };

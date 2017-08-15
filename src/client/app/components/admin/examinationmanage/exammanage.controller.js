@@ -8,22 +8,27 @@
         vm.turnActive = turnActive;
         vm.turn = 0;
         vm.Level = $state.params.level;
-        vm.deleteTest = deleteTest
+        vm.deleteTest = deleteTest,
+            vm.totaltime = 0;
         function turnActive(state) {
             vm.turn = state;
         }
         init();
         function init() {
             function succeedCallback(test) {
+                angular.forEach(test, function (e) {
+                    if (e.time) {
+                        e.time = Date.parse(e.time);
+                    }
+                }, this);
                 vm.test = test;
+                console.log(vm.test);
             }
 
             function errorCallback(err) {
                 console.log(err);
             }
-            testService.getTestByLevel(vm.Level).then(function (test) {
-                vm.test = test;
-            }, errorCallback);
+            testService.loadTests().then(succeedCallback, errorCallback);
         }
         function succeedCallback(message) {
             toastr.err('Xóa thành công');

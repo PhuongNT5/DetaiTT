@@ -9,7 +9,7 @@
 </div>
 <thead>
     <tr class="row-name">
-        <th>Lesson Id</th>
+        <th>Lesson Name</th>
         <th>Grammar Title</th>
         <th>Content</th>
         <th>Description</th>
@@ -19,7 +19,7 @@
 </thead>
 <tbody>
     <tr class="row-content" ng-repeat="grammar in vm.grammars track by $index">
-        <th>{{grammar.lesson_id}}</th>
+        <th>{{vm.lessons[grammar.lesson_id].name}}</th>
         <th>{{grammar.gramTitle}}</th>
         <th>{{grammar.gramContent.content}}</th>
         <th>{{grammar.gramContent.description}}</th>

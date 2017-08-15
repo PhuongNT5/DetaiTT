@@ -4,14 +4,14 @@
 
             <!-- Form Name -->
             <legend>Create New Lesson</legend>
-
-            <!-- Text input-->
             <div class="form-group">
-                <div class="form-group"><label class="col-md-3 control-label">Unit Name<span class="require">*</span></label>
-                    <div class="col-md-6">
-                        <select id="name" multiple="multiple" class="form-control" ng-model="vm.dataNames" ng-options="name as unit.name for unit in vm.units track by unit.id">
-                                        </select>
-                    </div>
+                <label for="inputType" class="col-md-4  control-label">Unit name
+                                <span class='require'>*</span>
+                            </label>
+                <div class="col-md-4 ">
+                    <select class="select-refresh form-control required" name="name" ng-model="vm.lesson.unit_id" required>
+                        <option ng-repeat="unit in vm.units" value ="{{unit.unit_id}}">{{unit.name}}</option>
+                                </select>
                 </div>
             </div>
             <!-- Text input-->

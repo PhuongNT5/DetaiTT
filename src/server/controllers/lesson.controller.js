@@ -26,6 +26,7 @@ function createLessons(req, res, next) {
         var request = {
             lesson_id: count + 1,
             name: req.body.name,
+            unit_id: req.body.unit_id,
             title: req.body.title
         };
         lessonDao.findOne({ lesson_id: request.lesson_id }).then(function (lesson) {

@@ -13,30 +13,40 @@ function createlessonController($q, $http, $state, $scope, lessonService, unitSe
     var vm = this;
     vm.lesson = {};
     vm.createlesson = createlesson;
-    vm.units = '';
     init();
+
     function createlesson() {
+
         function successCallBack(response) {
             $state.go('admin.lessonmanage', { reload: true });
             lessonService.loadLessons().then(function (lesson) {
                 vm.lesson = lesson;
             }, function (err) {
                 console.log(err);
+                toastr.error(err.message);
             });
         }
 
         function errorCallBack(err) {
             console.log(err);
+            toastr.error(err.message);
         }
-        lessonService.createLesson(vm.lesson).then(successCallBack, errorCallBack);
+        if (!vm.lesson.name) {
+            toastr.error('Lesson Name must not empty');
+        }
+        else {
+            console.log(vm.lesson);
+            lessonService.createLesson(vm.lesson).then(successCallBack, errorCallBack);
+        }
+
 
     };
     function init() {
         unitService.loadUnits().then(function (unit) {
             vm.units = unit;
-            console.log(vm.units);
         }, function (err) {
             console.log(err);
+            toastr.error(err.message);
         })
     }
 

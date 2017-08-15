@@ -14,7 +14,7 @@
         <th>Type</th>
         <th>Pronunciation</th>
         <th>Translate</th>
-        <th>Lesson Id</th>
+        <th>Lesson Name</th>
         <th>Setting</th>
     </tr>
 </thead>
@@ -25,7 +25,7 @@
         <th>{{vocabulary.type}}</th>
         <th>{{vocabulary.pronunciation}}</th>
         <th>{{vocabulary.translate}}</th>
-        <th>{{vocabulary.lesson_id}}</th>
+        <th>{{vm.lessons[vocabulary.lesson_id].name}}</th>
         <td>
             <a class="btn btn-danger edit " ng-click="vm.deleteGrammar()" aria-label="Settings ">
                 <i class="fa fa-trash " aria-hidden="true "></i>

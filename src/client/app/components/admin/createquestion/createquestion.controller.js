@@ -46,6 +46,7 @@
                     vm.questions = question;
                 }, function (err) {
                     console.log(err);
+                    toastr.error(err.message);
                 });
             }
 
@@ -57,7 +58,7 @@
 
             function errorCallback(err) {
                 console.log(err);
-                toastr.error(err);
+                toastr.error(err.message);
             }
             questionService.deleteQuesion(questionId).then(succeedCallback, errorCallback);
         }

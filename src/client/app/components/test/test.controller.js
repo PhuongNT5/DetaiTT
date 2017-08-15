@@ -10,7 +10,7 @@
         vm.count = 0;
         vm.checkAns = '';
         vm.status = 'todo';
-        vm.countdown = 900;
+        vm.countdown = 10;
         vm.startTimer = startTimer;
         vm.stopTimer = stopTimer;
         vm.pauseTimer = pauseTimer;
@@ -20,6 +20,7 @@
         vm.questionX = [];
         vm.TestID = '';
         vm.level = $stateParams.level;
+        vm.getResult = getResult
 
         init();
         var user = authService.getToken();
@@ -31,7 +32,7 @@
             })
         }
         getTest();
-        $scope.get_val = function (event) {
+        function getResult(event) {
             vm.status = 'submited';
             vm.isDisable = true;
             questionService.loadQuestions().then(function (response) {
@@ -93,6 +94,9 @@
             displayTimer(0);
             if (vm.countdown > 0) {
                 startTimer(vm.countdown);
+            }
+            if (vm.countdown == 0) {
+                getResult();
             }
         }
         function pauseTimer() {

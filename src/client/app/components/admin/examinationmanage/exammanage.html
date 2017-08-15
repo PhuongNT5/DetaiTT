@@ -1,6 +1,6 @@
 <create-test ng-if="vm.turn==1"></create-test>
 <div class="usermanage">
-    <h2 style="color: #448aff;text-align: center;"> LIST EXAMINATION </h2>
+    <h2 style="color: #448aff;text-align: center;"> LIST EXAMINATIONS </h2>
     <hr>
     <table class="table table-striped">
         <div class="dropdown">
@@ -21,7 +21,7 @@
         <td>{{x.test_id}}</td>
         <td>{{x.name}}</td>
         <td>{{x.title}}</td>
-        <td>{{x.time}}</td>
+        <td> {{ x.time}}</td>
         <td>{{x.level}}</td>
         <td>
             <a class="btn btn-danger edit " ng-click="vm.deleteTest(x.test_id)" aria-label="Settings ">

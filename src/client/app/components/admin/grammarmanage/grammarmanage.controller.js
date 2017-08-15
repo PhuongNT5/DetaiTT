@@ -1,12 +1,13 @@
 (function () {
     angular.module('app.grammarmanage')
         .controller('grammarmanageController', grammarmanageController);
-    grammarmanageController.$inject = ['$q', '$http', '$state', 'grammarService'];
-    function grammarmanageController($q, $http, $state, grammarService) {
+    grammarmanageController.$inject = ['$q', '$http', '$state', 'grammarService', 'lessonService'];
+    function grammarmanageController($q, $http, $state, grammarService, lessonService) {
         var vm = this;
         vm.grammar = {};
         vm.deleteGrammar = deleteGrammar
         vm.turnActive = turnActive;
+        vm.lessons = '';
         vm.turn = 0;
         function turnActive(state) {
             vm.turn = state;
@@ -22,6 +23,9 @@
             }
             grammarService.loadGrammar().then(function (grammar) {
                 vm.grammars = grammar;
+            }, errorCallback);
+            lessonService.loadLessons().then(function (lessons) {
+                vm.lessons = lessons;
             }, errorCallback);
         }
         function deleteGrammar(grammarId) {
