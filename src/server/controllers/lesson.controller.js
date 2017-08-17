@@ -24,7 +24,7 @@ function getLessons(req, res, next) {
 function createLessons(req, res, next) {
     lessonDao.count().exec(function (err, count) {
         var request = {
-            lesson_id: count + 1,
+            lesson_id: count + 2,
             name: req.body.name,
             unit_id: req.body.unit_id,
             title: req.body.title

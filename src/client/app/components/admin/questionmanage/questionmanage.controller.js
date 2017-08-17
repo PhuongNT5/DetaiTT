@@ -1,13 +1,14 @@
 (function () {
     angular.module('app.questionmanage')
         .controller('questionmanageController', questionmanageController);
-    questionmanageController.$inject = ['$q', '$http', '$state', 'questionService'];
-    function questionmanageController($q, $http, $state, questionService) {
+    questionmanageController.$inject = ['$q', '$http', '$state', 'questionService', 'testdetailService'];
+    function questionmanageController($q, $http, $state, questionService, testdetailService) {
         var vm = this;
         vm.question = {};
         vm.turnActive = turnActive;
         vm.turn = 0;
         vm.deleteQuestion = deleteQuestion;
+        vm.addQuestion = addQuestion;
         function turnActive(state) {
             vm.turn = state;
         }
@@ -24,6 +25,10 @@
                 vm.questions = question;
             }, errorCallback);
         }
+        function addQuestion() {
+
+        }
+
         function deleteQuestion(questionId) {
             function succeedCallback(response) {
                 $state.go('admin.questionmanage', { reload: true });

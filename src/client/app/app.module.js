@@ -19,6 +19,8 @@
         'app.examination',
         'app.test',
         'app.result',
+        'app.testlevel',
+        'app.testdetail',
 
         'blocks.exception',
         'blocks.logger',

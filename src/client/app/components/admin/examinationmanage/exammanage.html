@@ -6,32 +6,135 @@
         <div class="dropdown">
             <a class="btn-top" style="margin-right: 15px;" ng-class="vm.turn==1?'active':''" ng-click="vm.turnActive(1)" href="#" class="btn btn-primary btn-success pull-right"> <span class="glyphicon glyphicon-plus"></span> &nbsp Create New Examination</a>
         </div>
-</div>
-<thead>
-    <tr class="row-name">
-        <th>Test Id</th>
-        <th>Test Name</th>
-        <th>Title</th>
-        <th>Total Time</th>
-        <th>Level</th>
-        <th>Settings</th>
-</thead>
-<tbody>
-    <tr class="row-content" ng-repeat="x in vm.test track by $index">
-        <td>{{x.test_id}}</td>
-        <td>{{x.name}}</td>
-        <td>{{x.title}}</td>
-        <td> {{ x.time}}</td>
-        <td>{{x.level}}</td>
-        <td>
-            <a class="btn btn-danger edit " ng-click="vm.deleteTest(x.test_id)" aria-label="Settings ">
+
+        <thead>
+            <tr class="row-name">
+                <th>Test Id</th>
+                <th>Test Name</th>
+                <th>Title</th>
+                <th>Total Time</th>
+                <th>Level</th>
+                <th>Settings</th>
+        </thead>
+        <tbody>
+            <tr class="row-content" ng-repeat="x in vm.test track by $index">
+                <td>{{x.test_id}}</td>
+                <td>{{x.name}}</td>
+                <td>{{x.title}}</td>
+                <td> {{ x.time}}</td>
+                <td>{{x.level}}</td>
+                <td>
+                    <a class="btn btn-danger edit " ng-click="vm.deleteTest(x.test_id)" aria-label="Settings ">
                 <i class="fa fa-trash " aria-hidden="true "></i>
               </a> &nbsp
-            <a class="btn btn-info edit " href="#" aria-label="Settings ">
+                    <a class="btn btn-info edit " href="#" aria-label="Settings ">
                 <i class="fa fa-pencil-square-o " aria-hidden="true "></i>
               </a>
-        </td>
-    </tr>
-</tbody>
-</table>
+                    <button type "button" class="btn btn-info search " data-target="#modal-default-submit" data-toggle="modal" href="#" ng-click="vm.loadQuestion(x._id)"
+                        aria-label="Settings ">
+                <i class="fa fa-search " aria-hidden="true "></i>
+            </button>
+                    <div id="modal-default-submit" tabindex="-1" role="dialog" aria-labelledby="modal-default-label" aria-hidden="true" class="modal fade">
+                        <div class="modal-dialog" style="width:70%;">
+                            <div class="modal-content" style="margin-left:100px;">
+                                <div class="modal-header">
+                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                    <h4 id="modal-default-label" class="modal-title">LIST QUESTIONS</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div ng-if="vm.notQuestion == true">
+                                        <h4>Not have question</h4>
+                                    </div>
+                                    <table class="table table-striped" style="margin-left:50px;" ng-if="vm.notQuestion == false">
+                                        <thead>
+                                            <tr class="row-name">
+                                                <th>Question Id</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Question Type</th>
+                                                <th>A</th>
+                                                <th>B</th>
+                                                <th>C</th>
+                                                <th>D</th>
+                                                <th>Answer</th>
+
+                                        </thead>
+                                        <tbody>
+                                            <tr class="row-content" ng-repeat="ques in vm.listquestion.questionId track by $index">
+                                                <th>{{ques.question_id}}</th>
+                                                <th>{{ques.title}}</th>
+                                                <th>{{ques.description}}</th>
+                                                <th>{{ques.questionType}}</th>
+                                                <th>{{ques.A}}</th>
+                                                <th>{{ques.B}}</th>
+                                                <th>{{ques.C}}</th>
+                                                <th>{{ques.D}}</th>
+                                                <th>{{ques.answer}}</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" data-dismiss="modal" class="btn btn-default">OK</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" data-target="#modal-header-primary-listquestion" data-toggle="modal"
+                                        ng-if="vm.notQuestion == true" ng-click="vm.getQuestion()">Choose questions </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="modal-header-primary-listquestion" tabindex="-1" role="dialog" aria-labelledby="modal-default-label" aria-hidden="true"
+                        class="modal fade">
+                        <div class="modal-dialog" style="width:80%;">
+                            <div class="modal-content" style="margin-left:120px;">
+                                <div class="modal-header">
+                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                    <h4 id="modal-default-label" class="modal-title">LIST QUESTIONS</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="table table-striped" style="margin-left:50px;">
+                                        <thead>
+                                            <tr class="row-name">
+                                                <th>Question Id</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Question Type</th>
+                                                <th>A</th>
+                                                <th>B</th>
+                                                <th>C</th>
+                                                <th>D</th>
+                                                <th>Answer</th>
+                                                <th>Add</th>
+
+                                        </thead>
+                                        <tbody>
+                                            <tr class="row-content" ng-repeat="question in vm.questions track by $index">
+                                                <th>{{question.question_id}}</th>
+                                                <th>{{question.title}}</th>
+                                                <th>{{question.description}}</th>
+                                                <th>{{question.questionType}}</th>
+                                                <th>{{question.A}}</th>
+                                                <th>{{question.B}}</th>
+                                                <th>{{question.C}}</th>
+                                                <th>{{question.D}}</th>
+                                                <th>{{question.answer}}</th>
+                                                <td>
+                                                    <a class="btn btn-info edit " ng-click="vm.addQuestion(x._id)" aria-label="Settings ">
+                                                <i class="fa fa-plus" aria-hidden="true "></i>
+                                                </a></td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" data-dismiss="modal" class="btn btn-default">SAVE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                </tr>
+        </tbody>
+
+    </table>
 </div>

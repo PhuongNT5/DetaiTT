@@ -1,42 +1,47 @@
 (function () {
-    angular.module('app.test')
-        .controller('testController', testController);
-    testController.$inject = ['$q', '$scope', '$http', '$state', '$stateParams', 'questionService', '$interval', 'scoreService', 'authService', 'testService'];
-    function testController($q, $scope, $http, $state, $stateParams, questionService, $interval, scoreService, authService, testService) {
+    angular.module('app.testdetail')
+        .controller('testdetailController', testdetailController);
+    testdetailController.$inject = ['$q', '$scope', '$http', '$state', '$stateParams', 'testdetailService', '$interval', 'authService', 'testService', 'scoreService'];
+    function testdetailController($q, $scope, $http, $state, $stateParams, testdetailService, $interval, authService, testService, scoreService) {
         var vm = this;
-        var numberQues = 10;
+        var numberQues = 900;
         vm.questions = {};
         vm.questionA = {};
         vm.count = 0;
         vm.checkAns = '';
         vm.status = 'todo';
-        vm.countdown = 900;
+        vm.countdown = 10;
         vm.startTimer = startTimer;
         vm.stopTimer = stopTimer;
         vm.pauseTimer = pauseTimer;
         vm.countdownTimer = 0;
         vm.isDisable = false;
         vm.score = {};
+        vm.questionX = [];
         vm.TestID = '';
-        vm.level = $stateParams.level;
-        vm.getResult = getResult
+        vm.testId = $stateParams.testId;
+        vm.getResult = getResult,
+            vm.testinfo = {};
 
         init();
         var user = authService.getToken();
         function getTest() {
-            testService.loadTests().then(function (test) {
-                vm.TestID = test._id;
+            testdetailService.getTestDetailInfoById(vm.testId).then(function (infotest) {
+                vm.testinfo = infotest;
+                vm.TestID = vm.testinfo.testId._id;
+                console.log(vm.TestID);
             }, function (err) {
-                console.log(err);
-            })
+                toastr.error(err.message);
+            });
         }
         getTest();
+
+
         function getResult(event) {
             vm.status = 'submited';
             vm.isDisable = true;
-            questionService.loadQuestions().then(function (response) {
+            testdetailService.getTestDetailById(vm.testId).then(function (response) {
                 vm.questionA = response;
-
                 // for (var i = 0; i < 20; i++) {
                 //     for (var j = 0; j < 5; j++) {
                 //         if (vm.questions[j]) {
@@ -66,14 +71,15 @@
                 }).length;
             }, function (err) {
                 console.log(err);
-            })
+            });
             stopTimer();
+
             var obj = {
                 userId: user._id,
                 testId: vm.TestID,
                 score: vm.count
             }
-
+            console.log(obj);
             scoreService.createScore(obj).then(function (response) {
                 console.log("Create succsess");
             }, function (err) {
@@ -89,7 +95,7 @@
             function errorCallback(err) {
                 console.log(err);
             }
-            questionService.getRanQuestion($stateParams.level).then(succeedCallback, errorCallback);
+            testdetailService.getTestDetailById(vm.testId).then(succeedCallback, errorCallback);
             displayTimer(0);
             if (vm.countdown > 0) {
                 startTimer(vm.countdown);

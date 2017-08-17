@@ -1,0 +1,26 @@
+<div class="test">
+    <div class="test-page">
+        <div class="headpage">
+            <h5>VOCABULARY AND GRAMMAR TEST</h5>
+            <a class="info">BÀI THI TEST LEVEL</a>
+            <a class="unitname">Level  {{vm.Level}}</a>
+        </div>
+        <div class="thetest">
+            <div class="row">
+                <div ng-repeat="testlevel in vm.testlevels">
+                    <div class="col-sm-4 col-md-4" ng-disabled="isDisable">
+                        <div class="one true">
+                            <h3>
+                                Bài kiểm tra {{testlevel.testId.test_id}}
+                                <span class="tick" style="margin-left:5px;"><img src="../../../assets/images/checked.png"></span>
+                            </h3>
+                            <p>{{testlevel.testId.title}}</p>
+                            <p>{{testlevel.testId.name}}</p>
+                            <div class="ab"> <a class="test1" href="/testdetail/{{testlevel._id}}">Start</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -31,6 +31,7 @@ app.use(config.BASE_URL + '/grammar', require('./routes/grammar.routes')());
 app.use(config.BASE_URL + '/test', require('./routes/test.routes')());
 app.use(config.BASE_URL + '/question', require('./routes/question.routes')());
 app.use(config.BASE_URL + '/score', require('./routes/score.routes')());
+app.use(config.BASE_URL + '/testdetail', require('./routes/testdetail.routes')());
 
 console.log('About to crank up node');
 console.log('PORT=' + port);
