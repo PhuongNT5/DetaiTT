@@ -42,7 +42,17 @@
             function errorCallback(err) {
                 console.log(err);
             }
-            lessonService.deleteLesson(lessonId).then(succeedCallback, errorCallback);
+            lessonService.getLessonById(lessonId).then(function (lesson) {
+                if ((lesson.vocabularyId.length == 0) && (lesson.grammarId.length) == 0) {
+                    lessonService.deleteLesson(lessonId).then(succeedCallback, errorCallback);
+                }
+                else {
+                    toastr.error('Lesson must not delete. Exist vocabulary and grammar');
+                }
+            }, function (err) {
+                console.log(err);
+            })
+            // lessonService.deleteLesson(lessonId).then(succeedCallback, errorCallback);
         }
     }
 

@@ -10,7 +10,7 @@
                             </label>
                 <div class="col-md-4 ">
                     <select class="select-refresh form-control required" name="name" ng-model="vm.lesson.unit_id" required>
-                        <option ng-repeat="unit in vm.units" value ="{{unit.unit_id}}">{{unit.name}}</option>
+                        <option ng-repeat="unit in vm.units" value ="{{unit.unit_id -1}}">{{unit.name}}</option>
                                 </select>
                 </div>
             </div>

@@ -24,7 +24,7 @@ function getLessons(req, res, next) {
 function createLessons(req, res, next) {
     lessonDao.count().exec(function (err, count) {
         var request = {
-            lesson_id: count + 2,
+            lesson_id: count + 3,
             name: req.body.name,
             unit_id: req.body.unit_id,
             title: req.body.title
@@ -56,21 +56,28 @@ function updateLesson(req, res, next) {
     var lessonId = req.params.lesson_id;
     var request = {
         name: req.body.name,
-        title: req.body.title
+        title: req.body.title,
+        vocabularyId: req.body.vocabularyId,
+        grammarId: req.body.grammarId
     }
     request = _.omit(request, function (value) {
         return _.isUndefined(value)
     });
-    lessonDao.update({ lesson_id: lessonId }, request).then(
-        function (response) {
-            res.status(200).send(response).end();
-        }).catch(function (err) {
-            return next(err);
-        })
+    lessonDao.findOne({ lesson_id: lessonId }).then(function (response) {
+        var vocabularyId = req.body.vocabularyId;
+        var grammarId = req.body.grammarId;
+        lessonDao.update({ lesson_id: lessonId }, { $push: { vocabularyId: vocabularyId } }).then(
+            function (response) {
+                res.status(200).send(response).end();
+            }).catch(function (err) {
+                return next(err);
+            })
+    }).catch(function (err) {
+        return next(err);
+    })
 }
 
 function getLesson(req, res, next) {
-    console.log(req.params.lesson_id);
     return lessonDao.findOne({
         lesson_id: req.params.lesson_id
     })

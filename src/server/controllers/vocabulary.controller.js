@@ -20,17 +20,17 @@ function getWords(req, res, next) {
 function createWords(req, res, next) {
     vocabularyDao.count().exec(function (err, count) {
         var request = {
-            vocabulary_id: count + 1,
+            vocabulary_id: count + 3,
             word: req.body.word,
             type: req.body.type,
             pronunciation: req.body.pronunciation,
             translate: req.body.translate,
             lesson_id: req.body.lesson_id
         };
-        vocabularyDao.findOne({ vocabulary_id: request.vocabulary_id }).then(function (vocabulary) {
+        vocabularyDao.findOne({ word: request.word }).then(function (vocabulary) {
 
             if (vocabulary) {
-                return next({ errorCode: 400, message: "duplicate vocabulary_id" });
+                return next({ errorCode: 400, message: "duplicate vocabulary" });
             }
 
             vocabularyDao.create(request).then(function (vocabulary) {

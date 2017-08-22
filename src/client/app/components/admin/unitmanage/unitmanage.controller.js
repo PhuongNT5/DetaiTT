@@ -38,7 +38,17 @@
             function errorCallback(err) {
                 console.log(err);
             }
-            unitService.deleteUnit(unitId).then(succeedCallback, errorCallback);
+            unitService.getUnitByUnitId(unitId).then(function (unit) {
+                if (unit.lessons.length == 0) {
+                    unitService.deleteUnit(unitId).then(succeedCallback, errorCallback);
+                }
+                else {
+                    toastr.error('Unit exists lessons. must not delete');
+                }
+            }, function (err) {
+                console.log(err);
+            })
+            // unitService.deleteUnit(unitId).then(succeedCallback, errorCallback);
         }
 
     }

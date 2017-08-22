@@ -10,7 +10,8 @@
             loadLessons: loadLessons,
             createLesson: createLesson,
             getLessonById: getLessonById,
-            deleteLesson: deleteLesson
+            deleteLesson: deleteLesson,
+            updateLesson: updateLesson
         };
 
         function loadLessons() {
@@ -32,7 +33,15 @@
             });
             return deferred.promise;
         };
-
+        function updateLesson(lessonId, data) {
+            var deferred = $q.defer();
+            $http.put(apiUrl + "/" + lessonId, data).then(function (res) {
+                deferred.resolve(res.data);
+            }, function (err) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
         function getLessonById(lessonId) {
             var deferred = $q.defer();
             $http.get(apiUrl + "/" + lessonId).then(function (res) {

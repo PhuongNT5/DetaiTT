@@ -19,7 +19,7 @@
         vm.score = {};
         vm.TestID = '';
         vm.level = $stateParams.level;
-        vm.getResult = getResult
+        vm.getResult = getResult;
 
         init();
         var user = authService.getToken();
@@ -64,21 +64,21 @@
                         }
                     }
                 }).length;
+                var obj = {
+                    userId: user._id,
+                    testId: vm.TestID,
+                    score: vm.count
+                }
+                scoreService.createScore(obj).then(function (response) {
+                    console.log("Create succsess");
+                }, function (err) {
+                    console.log(err);
+                })
             }, function (err) {
                 console.log(err);
             })
-            stopTimer();
-            var obj = {
-                userId: user._id,
-                testId: vm.TestID,
-                score: vm.count
-            }
 
-            scoreService.createScore(obj).then(function (response) {
-                console.log("Create succsess");
-            }, function (err) {
-                console.log(err);
-            })
+            stopTimer();
         };
 
         function init() {

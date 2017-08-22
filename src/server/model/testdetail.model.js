@@ -14,6 +14,6 @@ var testdetailSchema = new schema({
     }],
 
 });
-testdetailSchema.index({ "test_id": 1 }, { unique: true });
+testdetailSchema.index({ "testId": 1 }, { unique: true });
 var testdetail = mongoose.model('TestDetail', testdetailSchema);
 module.exports = testdetail;

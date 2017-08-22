@@ -10,7 +10,7 @@
         vm.count = 0;
         vm.checkAns = '';
         vm.status = 'todo';
-        vm.countdown = 10;
+        vm.countdown = 900;
         vm.startTimer = startTimer;
         vm.stopTimer = stopTimer;
         vm.pauseTimer = pauseTimer;
@@ -69,22 +69,23 @@
                         }
                     }
                 }).length;
+
+                var obj = {
+                    userId: user._id,
+                    testId: vm.TestID,
+                    score: vm.count
+                }
+                console.log(obj);
+                scoreService.createScore(obj).then(function (response) {
+                    console.log("Create succsess");
+                }, function (err) {
+                    console.log(err);
+                })
             }, function (err) {
                 console.log(err);
             });
             stopTimer();
 
-            var obj = {
-                userId: user._id,
-                testId: vm.TestID,
-                score: vm.count
-            }
-            console.log(obj);
-            scoreService.createScore(obj).then(function (response) {
-                console.log("Create succsess");
-            }, function (err) {
-                console.log(err);
-            })
         };
 
         function init() {

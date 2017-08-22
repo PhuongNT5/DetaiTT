@@ -6,20 +6,23 @@
     height: 86%;
     padding: 0 3%;
     display: inline-block;
-    overflow-y: auto;
-    @extend .customScrollBar;
+    // overflow-y: auto;
+    // @extend .customScrollBar;
     .carousel-caption{
         margin-top:20%;
     }
     .container{
         width:1300px;
     }
+    .row{
+        margin-left:-100px !important;
+        margin-right:30px !important;
+    }
     .row .col-sm-3{
         color:white;
         height:480px;
         padding-top:30px;
         a,h4{
-           
                 font-style: normal;
     font-weight: 900;
         }

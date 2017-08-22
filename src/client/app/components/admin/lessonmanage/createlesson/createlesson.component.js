@@ -18,13 +18,14 @@ function createlessonController($q, $http, $state, $scope, lessonService, unitSe
     function createlesson() {
 
         function successCallBack(response) {
-            $state.go('admin.lessonmanage', { reload: true });
+
             lessonService.loadLessons().then(function (lesson) {
                 vm.lesson = lesson;
             }, function (err) {
                 console.log(err);
                 toastr.error(err.message);
             });
+            $state.go('admin.lessonmanage', { reload: true });
         }
 
         function errorCallBack(err) {

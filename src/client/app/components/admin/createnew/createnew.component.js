@@ -16,12 +16,12 @@ function createnewController($q, $http, $state, $scope, unitService) {
     // init();
     function createunit() {
         function successCallBack(response) {
-            $state.go('admin.unitmanage', { reload: true });
             unitService.loadUnits().then(function (unit) {
                 vm.unit = unit;
             }, function (err) {
                 console.log(err);
             });
+            $state.go('admin.unitmanage', { reload: true });
         }
 
         function errorCallBack(err) {

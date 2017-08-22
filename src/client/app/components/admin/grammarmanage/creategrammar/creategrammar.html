@@ -22,9 +22,23 @@
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="lastname">Lesson Title</label>
+                <label class="col-md-4 control-label" for="lastname">Content</label>
                 <div class="col-md-4">
-                    <input id="lastname" name="lastname" type="text" ng-model="vm.lesson.title" placeholder="Lesson Title" class="form-control input-md">
+                    <textarea name="lastname" type="text" ng-model="vm.grammar.content" placeholder="Content" class="form-control input-md"></textarea>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="lastname">Description</label>
+                <div class="col-md-4">
+                    <textarea name="lastname" type="text" ng-model="vm.grammar.description" placeholder="Discription" class="form-control input-md"></textarea>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="lastname">Example</label>
+                <div class="col-md-4">
+                    <textarea name="lastname" type="text" ng-model="vm.grammar.example" placeholder="Example" class="form-control input-md"></textarea>
 
                 </div>
             </div>
@@ -33,7 +47,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="button1id"></label>
                 <div class="col-md-8">
-                    <button id="button1id" name="button1id" class="btn btn-success" ng-click="vm.createlesson()">Create</button>
+                    <button id="button1id" name="button1id" class="btn btn-success" ng-click="vm.createGram()">Create</button>
                     <button id="button2id" name="button2id" class="btn btn-danger" ng-class="vm.turn==0?'active':''" ng-click="vm.turnActive(0)">Cancel</button>
                 </div>
             </div>

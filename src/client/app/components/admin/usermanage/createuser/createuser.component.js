@@ -1,6 +1,6 @@
 angular.module('app.admin')
     .component('createUser', {
-        templateUrl: 'app/components/admin/createuser/createuser.html',
+        templateUrl: 'app/components/admin/usermanage/createuser/createuser.html',
         controller: createuserController,
         controllerAs: 'vm',
         bindings: {

@@ -7,7 +7,7 @@
         var vm = this;
         vm.Level = $state.params.level;
         vm.test = {};
-        vm.createScore = createScore;
+        // vm.createScore = createScore;
         init();
         function init() {
 
@@ -22,17 +22,17 @@
 
         }
         var user = authService.getToken();
-        function createScore(testId) {
-            var obj = {
-                testId: testId,
-                userId: user._id
-            }
-            scoreService.createScore(obj).then(function (score) {
-                vm.score = score;
-            }, function (err) {
-                console.log(err);
-            })
-        }
+        // function createScore(testId) {
+        //     var obj = {
+        //         testId: testId,
+        //         userId: user._id
+        //     }
+        //     scoreService.createScore(obj).then(function (score) {
+        //         vm.score = score;
+        //     }, function (err) {
+        //         console.log(err);
+        //     })
+        // }
 
 
     }
